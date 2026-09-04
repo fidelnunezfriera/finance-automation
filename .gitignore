@@ -1,0 +1,19 @@
+# La carpeta se versiona, su contenido no: así existe tras clonar y el
+# usuario solo tiene que dejar el JSON dentro. Ojo con la primera regla:
+# `credentials/` a secas ignora el directorio entero y ninguna excepción
+# posterior puede rescatar nada de dentro.
+credentials/*
+!credentials/README.md
+config.yaml
+
+.vscode/
+data/
+out/
+logs/
+account_transactions.csv
+all_events.json
+*.json.bak
+__pycache__/
+.venv/
+*.pyc
+.env

@@ -1,0 +1,31 @@
+pipeline:
+  source_file: account_transactions.csv
+  output_dir: out
+  sheet_name: transactions
+  rules_tab: rules
+  account_name: TradeRepublic
+  source_name: pytr
+  account_holder_name: "YOUR FULL NAME AS IT APPEARS IN BANK TRANSFERS"
+
+credentials:
+  gdrive_sa: credentials/gdrive-sa.json
+
+google_sheets:
+  spreadsheet_id: YOUR_GOOGLE_SHEET_ID_HERE
+
+logging:
+  level: INFO
+  log_dir: logs
+  rotate_after_mb: 5
+  keep_last_n_logs: 10
+
+# Periodicidad de la ejecución desatendida (pasos 2-4: limpieza, carga y
+# derivación de posiciones). El paso 1 (exportación desde Trade Republic) queda
+# fuera porque pytr exige un OTP enviado al móvil y no puede automatizarse.
+# Se aplica con: python pipeline/schedule_pipeline.py --install
+schedule:
+  enabled: true
+  frequency: daily          # hourly | daily | weekly
+  time: "07:00"             # HH:MM, hora local (ignorado si frequency=hourly)
+  day_of_week: monday       # sólo si frequency=weekly
+  task_name: FinanceAutomationPipeline

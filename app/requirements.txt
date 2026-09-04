@@ -1,0 +1,4 @@
+# Las dependencias del dashboard viven ahora en el requirements.txt de la raíz,
+# junto con las del pipeline. Este archivo se mantiene para no romper
+# instrucciones antiguas que instalaban los dos por separado.
+-r ../requirements.txt

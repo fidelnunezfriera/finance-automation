@@ -1,0 +1,7 @@
+* text=auto
+*.sh text eol=lf
+*.py text eol=lf
+
+# Los .bat necesitan CRLF: con finales LF, cmd.exe rompe los bloques if(...)
+# y los goto/etiquetas. Se fuerza aqui para no depender de core.autocrlf.
+*.bat text eol=crlf
